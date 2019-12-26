@@ -28,7 +28,7 @@ SRC = check_args.c \
 	  ft_strlen.c \
 	  ft_strncmp.c \
 	  ft_strnew.c \
-	  ft_tolower.c \
+	  ft_strtolower.c \
 	  ft_ultoa_base.c \
 	  ft_ultoa.c \
 	  init_arg.c \

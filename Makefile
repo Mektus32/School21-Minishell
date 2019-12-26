@@ -3,13 +3,17 @@
 NAME = minishell
 
 # src / obj files
-SRC =   main.c
+SRC =   main.c \
+		useful.c \
+		commands.c \
+		input_prompt.c \
+
 
 OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
 # compiler
 CC = gcc
-CFLAGS = -Wextra -Wall -Werror
+//CFLAGS = -Wextra -Wall -Werror
 
 # ft library
 FT = ./libft/
