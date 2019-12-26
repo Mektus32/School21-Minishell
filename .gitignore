@@ -1,0 +1,9 @@
+/cmake-build-debug
+/CMakeLists.txt
+/minishell
+/obj
+/libft/obj
+/libft/libft.a
+/ft_printf/obj
+/ft_printf/libftprintf.a
+/.idea
