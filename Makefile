@@ -7,6 +7,7 @@ SRC =   main.c \
 		useful.c \
 		commands.c \
 		input_prompt.c \
+		check_commands.c \
 
 
 OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
