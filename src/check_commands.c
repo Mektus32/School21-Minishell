@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-int		check_command(t_min *sh)
+int check_command(t_min *sh)
 {
 	char	**dirs;
 	char	*program;
@@ -16,7 +16,7 @@ int		check_command(t_min *sh)
 		{
 			start_program(sh->line[0], *sh);
 		}
-		else if (get_program((const char **) dirs, sh->line[0] + 2))
+		else if (!get_program((const char **) dirs, sh->line[0] + 2))
 		{
 			ft_printf("~bash: %s: No such file or directory\n", sh->line[0]);
 		}
@@ -33,6 +33,10 @@ int		check_command(t_min *sh)
 	else if (!strcmp("cd", sh->line[0]))
 	{
 		cd(sh);
+	}
+	else if (!strcmp("echo", sh->line[0]))
+	{
+		echo(*sh);
 	}
 	ft_frtwarr((void**)dirs, INT_MAX);
 	return 1;

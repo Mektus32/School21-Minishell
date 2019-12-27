@@ -33,20 +33,25 @@ char *get_program(const char **dirs, const char *name)
 	size_t	i;
 	struct dirent	*file;
 
-	i = -1;
-	while (dirs[++i])
+	if (ft_strcmp(name, "echo"))
 	{
-		if ((fd_dir = opendir(dirs[i])))
+		i = -1;
+		while (dirs[++i])
 		{
-			while ((file = readdir(fd_dir)))
+			if ((fd_dir = opendir(dirs[i])))
 			{
-				if (!strcmp(name, file->d_name))
+				while ((file = readdir(fd_dir)))
 				{
-					closedir(fd_dir);
-					return (ft_free_strjoin_rev((char*)dirs[i], ft_strjoin("/", file->d_name)));
+					if (!strcmp(name, file->d_name))
+					{
+						closedir(fd_dir);
+						return (ft_free_strjoin_rev((char *) dirs[i],
+													ft_strjoin("/",
+															   file->d_name)));
+					}
 				}
+				closedir(fd_dir);
 			}
-			closedir(fd_dir);
 		}
 	}
 	return (NULL);

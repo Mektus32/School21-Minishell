@@ -115,5 +115,6 @@ char				*ft_strtolower(char *str);
 int					ft_max(int a, int b);
 int					ft_min(int a, int b);
 void				ft_replace_repetition(char **str, char ch);
+char				*ft_strplussymb(char *str, char ch);
 
 #endif

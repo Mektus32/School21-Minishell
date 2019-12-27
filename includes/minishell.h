@@ -38,7 +38,7 @@ char *get_program(const char **dirs, const char *name);
 /*
  * check_commands.c
  */
-int		check_command(t_min *sh);
+int check_command(t_min *sh);
 
 /*
  * cd.c
@@ -46,5 +46,10 @@ int		check_command(t_min *sh);
 void	cd(t_min *sh);
 void	change_paths(t_min *sh, char *new_cur, char *new_prev);
 void	cd_second_param(t_min *sh);
+
+/*
+ * echo.c
+ */
+void echo(t_min sh);
 
 #endif
