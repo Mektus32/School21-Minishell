@@ -27,7 +27,7 @@ void	start_program(const char *name, t_min sh)
 	wait(NULL);
 }
 
-char	*get_program(const char **dirs, const char *name, t_min sh)
+char *get_program(const char **dirs, const char *name)
 {
 	DIR	*fd_dir;
 	size_t	i;

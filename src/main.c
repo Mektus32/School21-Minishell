@@ -25,8 +25,16 @@ int main(int ac, char **av, char **env)
 		sh.line = ft_strsplit(line, ' ');
 		if (sh.line[0])
 		{
-			check_command(&sh);
+			if (!check_command(&sh))
+			{
+				ft_frtwarr((void **) sh.line, INT_MAX);
+				free(line);
+				free(sh.cur_path);
+				free(sh.prev_path);
+				return 0;
+			}
 			ft_frtwarr((void**)sh.line, INT_MAX);
+			free(line);
 		}
 	}
 	return (0);

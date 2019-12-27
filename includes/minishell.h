@@ -33,16 +33,18 @@ void	input_prompt(t_min sh);
  */
 char	*ft_getenv(const char *name, t_min sh);
 void	start_program(const char *name, t_min sh);
-char	*get_program(const char **dirs, const char *name, t_min sh);
+char *get_program(const char **dirs, const char *name);
 
 /*
  * check_commands.c
  */
-void	check_command(t_min *sh);
+int		check_command(t_min *sh);
 
 /*
- * commands.c
+ * cd.c
  */
 void	cd(t_min *sh);
+void	change_paths(t_min *sh, char *new_cur, char *new_prev);
+void	cd_second_param(t_min *sh);
 
 #endif
