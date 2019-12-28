@@ -8,14 +8,25 @@ void	sh_init(t_min *sh, const char **av, const char **env)
 	sh->env = ft_twarrcpy(env, INT_MAX);
 }
 
+void	sh_free(t_min *sh, char **line)
+{
+	ft_frtwarr((void **) sh->line, INT_MAX);
+	ft_frtwarr((void **) sh->av, INT_MAX);
+	ft_frtwarr((void **) sh->env, INT_MAX);
+	free(*line);
+	free(sh->cur_path);
+	free(sh->prev_path);
+}
+
 int main(int ac, const char **av, const char **env)
 {
 	t_min	sh;
 	char	*line;
 
-	if (ac > 1) {
+	if (ac > 1)
+	{
 		ft_printf("usage: ./minishell\n");
-		exit(0);
+		return 0;
 	}
 	sh_init(&sh, av, env);
 	while (1)
@@ -27,17 +38,11 @@ int main(int ac, const char **av, const char **env)
 		{
 			if (!check_command(&sh))
 			{
-				ft_frtwarr((void **) sh.line, INT_MAX);
-				ft_frtwarr((void **) sh.av, INT_MAX);
-				ft_frtwarr((void **) sh.env, INT_MAX);
-				free(line);
-				free(sh.cur_path);
-				free(sh.prev_path);
+				sh_free(&sh, &line);
 				return 0;
 			}
 			ft_frtwarr((void **) sh.line, INT_MAX);
 			free(line);
 		}
 	}
-	return (0);
 }
