@@ -20,6 +20,12 @@ void	ft_frtwarr(void **arr, int size)
 		return ;
 	i = -1;
 	while (++i < size && arr[i] != NULL)
+	{
+		//write(1, "3check\n", 8);
 		free(arr[i]);
+	//	write(1, "4check\n", 8);
+	}
+//	write(1, "5check\n", 8);
 	free(arr);
+	//write(1, "6check\n", 8);
 }

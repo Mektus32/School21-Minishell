@@ -11,18 +11,19 @@ char	**ft_addlinetwarr(const char **arr, const char *str, size_t size)
 	real_size = 0;
 	while (arr[real_size] && real_size < size)
 		++real_size;
-	if (!(new_arr = (char**)malloc(sizeof(char*) * (real_size + 1))))
+	if (!(new_arr = (char**)malloc(sizeof(char*) * (real_size + 2))))
 		return (NULL);
-	i = -1;
-	while (++i < real_size)
+	i = 0;
+	while (i < real_size)
 	{
 		if (!(new_arr[i] = ft_strdup(arr[i])))
 		{
 			ft_frtwarr((void **)new_arr, i);
 			return (NULL);
 		}
+		++i;
 	}
-	new_arr[real_size] = ft_strdup(str);
-	new_arr[real_size + 1] = NULL;
+	new_arr[i] = ft_strdup(str);
+	new_arr[i + 1] = NULL;
 	return (new_arr);
 }

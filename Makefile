@@ -17,7 +17,7 @@ OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
 # compiler
 CC = gcc
-CFLAGS = -Wextra -Wall -Werror -g3
+#CFLAGS = -Wextra -Wall -Werror -g3
 #-fsanitize=address
 
 # ft library

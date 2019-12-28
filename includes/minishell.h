@@ -68,7 +68,7 @@ void	ft_unsetenv_new_env(const char *name, t_min *sh, int size);
  * setenv.c
  */
 void	ft_setenv(t_min *sh);
-void ft_setenv_add_new(const char *str, t_min *sh, int size);
+void	ft_setenv_add_new(const char *str, t_min *sh, int size);
 void	ft_setenv_origin(const char **name, const char **value, int overwrite, t_min *sh);
 
 #endif

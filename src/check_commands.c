@@ -9,6 +9,7 @@ int check_command(t_min *sh)
 	if ((program = get_program((const char **) dirs, sh->line[0])))
 	{
 		start_program(program, *sh);
+		free(program);
 	}
 	else if (!ft_strncmp(sh->line[0], "./", 2))
 	{
@@ -49,6 +50,10 @@ int check_command(t_min *sh)
 	else if (!ft_strcmp("setenv", sh->line[0]))
 	{
 		ft_setenv(sh);
+	}
+	else
+	{
+		ft_printf("Command '%s' not found\n", sh->line[0]);
 	}
 	ft_frtwarr((void **)dirs, INT_MAX);
 	return 1;
