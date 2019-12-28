@@ -33,12 +33,12 @@ void	input_prompt(t_min sh);
  */
 char	*ft_getenv(const char *name, t_min sh);
 void	start_program(const char *name, t_min sh);
-char *get_program(const char **dirs, const char *name);
+char	*get_program(const char **dirs, const char *name);
 
 /*
  * check_commands.c
  */
-int check_command(t_min *sh);
+int		check_command(t_min *sh);
 
 /*
  * cd.c
@@ -50,6 +50,9 @@ void	cd_second_param(t_min *sh);
 /*
  * echo.c
  */
-void echo(t_min sh);
+void	echo(t_min sh);
+int		echo_quotes(int *count_solo, int *count_doub, char **res, char ch);
+void	echo_variable(t_min sh, int i, int *j, char **res);
+void	echo_output(int count_solo, int count_doub, char **res);
 
 #endif
