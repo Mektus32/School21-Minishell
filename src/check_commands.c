@@ -38,6 +38,10 @@ int check_command(t_min *sh)
 	{
 		echo(*sh);
 	}
+	else if (!strcmp("env", sh->line[0]))
+	{
+		env(*sh);
+	}
 	ft_frtwarr((void**)dirs, INT_MAX);
 	return 1;
 }

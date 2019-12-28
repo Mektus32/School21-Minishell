@@ -37,6 +37,8 @@ void	echo_variable(t_min sh, int i, int *j, char **res)
 	{
 		var = ft_strplussymb(var, sh.line[i][*j]);
 		(*j)++;
+		if (sh.line[i][*j] == '$')
+			break;
 	}
 	if (!(com = ft_getenv(var + 1, sh)))
 		*res = ft_free_join(*res, var);

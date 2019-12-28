@@ -55,4 +55,9 @@ int		echo_quotes(int *count_solo, int *count_doub, char **res, char ch);
 void	echo_variable(t_min sh, int i, int *j, char **res);
 void	echo_output(int count_solo, int count_doub, char **res);
 
+/*
+ * env.c
+ */
+void	env(t_min sh);
+
 #endif
