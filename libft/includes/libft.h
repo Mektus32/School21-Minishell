@@ -116,5 +116,6 @@ int					ft_max(int a, int b);
 int					ft_min(int a, int b);
 void				ft_replace_repetition(char **str, char ch);
 char				*ft_strplussymb(char *str, char ch);
+char				**ft_twarrcpy(const char **arr, size_t size);
 
 #endif

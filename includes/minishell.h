@@ -7,6 +7,7 @@
 #include <limits.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
 #include <dirent.h>
 
 typedef struct	s_min
@@ -21,7 +22,7 @@ typedef struct	s_min
 /*
  * main.c
  */
-void	sh_init(t_min *sh, char **av, char **env);
+void	sh_init(t_min *sh, const char **av, const char **env);
 
 /*
  * input_prompt.c
@@ -59,5 +60,7 @@ void	echo_output(int count_solo, int count_doub, char **res);
  * env.c
  */
 void	env(t_min sh);
+void	env_print_error(char *name);
+void	ft_unsetenv(const char *name, t_min *sh);
 
 #endif

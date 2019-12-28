@@ -16,6 +16,8 @@ void	ft_frtwarr(void **arr, int size)
 {
 	int		i;
 
+	if (!arr || !*arr)
+		return ;
 	i = -1;
 	while (++i < size && arr[i] != NULL)
 		free(arr[i]);

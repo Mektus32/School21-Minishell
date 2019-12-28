@@ -33,7 +33,7 @@ char *get_program(const char **dirs, const char *name)
 	size_t	i;
 	struct dirent	*file;
 
-	if (ft_strcmp(name, "echo"))
+	if (ft_strcmp(name, "echo") && ft_strcmp("env", name) && dirs)
 	{
 		i = -1;
 		while (dirs[++i])

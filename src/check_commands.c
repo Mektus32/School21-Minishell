@@ -10,7 +10,7 @@ int check_command(t_min *sh)
 	{
 		start_program(program, *sh);
 	}
-	else if (!strncmp(sh->line[0], "./", 2))
+	else if (!ft_strncmp(sh->line[0], "./", 2))
 	{
 		if (!access(sh->line[0], 1))
 		{
@@ -25,22 +25,26 @@ int check_command(t_min *sh)
 			ft_printf("~bash: %s: Permission denied\n", sh->line[0]);
 		}
 	}
-	else if (!strcmp("exit", sh->line[0]))
+	else if (!ft_strcmp("exit", sh->line[0]))
 	{
 		ft_frtwarr((void**)dirs, INT_MAX);
 		return 0;
 	}
-	else if (!strcmp("cd", sh->line[0]))
+	else if (!ft_strcmp("cd", sh->line[0]))
 	{
 		cd(sh);
 	}
-	else if (!strcmp("echo", sh->line[0]))
+	else if (!ft_strcmp("echo", sh->line[0]))
 	{
 		echo(*sh);
 	}
-	else if (!strcmp("env", sh->line[0]))
+	else if (!ft_strcmp("env", sh->line[0]))
 	{
 		env(*sh);
+	}
+	else if (!ft_strcmp("unsetenv", sh->line[0]))
+	{
+		ft_unsetenv(sh->line[1], sh);
 	}
 	ft_frtwarr((void**)dirs, INT_MAX);
 	return 1;

@@ -1,14 +1,14 @@
 #include "minishell.h"
 
-void	sh_init(t_min *sh, char **av, char **env)
+void	sh_init(t_min *sh, const char **av, const char **env)
 {
 	sh->prev_path = getcwd(NULL, INT_MAX);
 	sh->cur_path = getcwd(NULL, INT_MAX);;
-	sh->av = av;
-	sh->env = env;
+	sh->av = ft_twarrcpy(av, INT_MAX);
+	sh->env = ft_twarrcpy(env, INT_MAX);
 }
 
-int main(int ac, char **av, char **env)
+int main(int ac, const char **av, const char **env)
 {
 	t_min	sh;
 	char	*line;
