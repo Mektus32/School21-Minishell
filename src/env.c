@@ -52,12 +52,12 @@ void	ft_unsetenv_new_env(const char *name, t_min *sh, int size)
 		else
 			if (!(env[++j] = ft_strdup(sh->env[i])))
 			{
-				ft_frtwarr((void**)env, j - 1);
+				ft_frtwarr((void **)env, j - 1);
 				return ;
 			}
 	}
 	env[j] = NULL;
-	ft_frtwarr((void**)sh->env, INT_MAX);
+	ft_frtwarr((void **)sh->env, INT_MAX);
 	sh->env = env;
 }
 

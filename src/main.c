@@ -28,12 +28,14 @@ int main(int ac, const char **av, const char **env)
 			if (!check_command(&sh))
 			{
 				ft_frtwarr((void **) sh.line, INT_MAX);
+				ft_frtwarr((void **) sh.av, INT_MAX);
+				ft_frtwarr((void **) sh.env, INT_MAX);
 				free(line);
 				free(sh.cur_path);
 				free(sh.prev_path);
 				return 0;
 			}
-			ft_frtwarr((void**)sh.line, INT_MAX);
+			ft_frtwarr((void **) sh.line, INT_MAX);
 			free(line);
 		}
 	}

@@ -27,7 +27,7 @@ int check_command(t_min *sh)
 	}
 	else if (!ft_strcmp("exit", sh->line[0]))
 	{
-		ft_frtwarr((void**)dirs, INT_MAX);
+		ft_frtwarr((void **)dirs, INT_MAX);
 		return 0;
 	}
 	else if (!ft_strcmp("cd", sh->line[0]))
@@ -46,6 +46,10 @@ int check_command(t_min *sh)
 	{
 		ft_unsetenv(sh->line[1], sh);
 	}
-	ft_frtwarr((void**)dirs, INT_MAX);
+	else if (!ft_strcmp("setenv", sh->line[0]))
+	{
+		ft_setenv(sh);
+	}
+	ft_frtwarr((void **)dirs, INT_MAX);
 	return 1;
 }

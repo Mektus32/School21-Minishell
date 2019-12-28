@@ -8,6 +8,7 @@ SRC =   cd.c \
 		main.c \
 		echo.c \
 		useful.c \
+		setenv.c \
 		input_prompt.c \
 		check_commands.c \
 
@@ -16,7 +17,8 @@ OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
 # compiler
 CC = gcc
-#CFLAGS = -Wextra -Wall -Werror -g3 -fsanitize=address
+CFLAGS = -Wextra -Wall -Werror -g3
+#-fsanitize=address
 
 # ft library
 FT = ./libft/

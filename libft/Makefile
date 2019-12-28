@@ -102,6 +102,7 @@ SRC	=	ft_atoi.c \
 		ft_replace_repetition.c \
 		ft_strplussymb.c \
 		ft_twarrcpy.c \
+		ft_addlinetwarr.c \
 
 OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
