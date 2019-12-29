@@ -12,37 +12,42 @@
 
 #include "minishell.h"
 
-void	ft_setenv_origin(const char **name, const char **value,
-		int overwrite, t_min *sh)
+void	ft_setenv_addline(char **line, t_min *sh)
+{
+	char	**env;
+
+	if ((env = ft_addlinetwarr((const char **)sh->env, *line, INT_MAX)))
+	{
+		ft_frtwarr((void **)sh->env, INT_MAX);
+		free(*line);
+		sh->env = env;
+	}
+}
+
+void	ft_setenv_origin(char **name, char **value, int overwrite, t_min *sh)
 {
 	int		i;
 	int		f;
 	char	*tmp;
-	char	**env;
 
 	i = -1;
 	f = 0;
 	while (sh->env[++i])
-		if (!ft_strncmp((char*)name, sh->env[i],
-		ft_strlen((char*)name)) && sh->env[i][ft_strlen((char*)name)] == '=')
+		if (!ft_strncmp(*name, sh->env[i],
+		ft_strlen(*name)) && sh->env[i][ft_strlen(*name)] == '=')
 		{
 			if (overwrite)
 			{
 				free(sh->env[i]);
-				sh->env[i] = ft_free_strjoin_rev((char*)name,
-						ft_strjoin("=", (char*)value));
+				sh->env[i] = ft_free_strjoin_rev(*name,
+						ft_strjoin("=", *value));
 			}
 			f = 1;
 		}
 	if (!f)
 	{
-		tmp = ft_free_strjoin_rev((char*)name, ft_strjoin("=", (char*)value));
-		if ((env = ft_addlinetwarr((const char **)sh->env, tmp, INT_MAX)))
-		{
-			ft_frtwarr((void **)sh->env, INT_MAX);
-			free(tmp);
-			sh->env = env;
-		}
+		tmp = ft_free_strjoin_rev(*name, ft_strjoin("=", *value));
+		ft_setenv_addline(&tmp, sh);
 	}
 }
 
@@ -61,7 +66,6 @@ void	ft_setenv(t_min *sh)
 		return ;
 	}
 	if (!ft_isdigit(sh->line[3][0]))
-	{
 		if ((sh->line[3][0] == '-' || sh->line[3][0] == '+') &&
 				ft_isdigit(sh->line[3][1]))
 			overwrite = ft_atoi(sh->line[3]);
@@ -71,9 +75,7 @@ void	ft_setenv(t_min *sh)
 			sh->line[3]);
 			return ;
 		}
-	}
 	else
 		overwrite = ft_atoi(sh->line[3]);
-	ft_setenv_origin((const char **)sh->line[1], (const char **)sh->line[2],
-			overwrite, sh);
+	ft_setenv_origin(&sh->line[1], &sh->line[2], overwrite, sh);
 }
