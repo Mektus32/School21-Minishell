@@ -6,7 +6,7 @@
 /*   By: ojessi <ojessi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 18:18:09 by ojessi            #+#    #+#             */
-/*   Updated: 2019/06/10 17:15:48 by ojessi           ###   ########.fr       */
+/*   Updated: 2019/12/29 16:05:34 by ojessi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void				*ft_memccpy(void *dest, const void *source,
 void				*ft_memmove(void *dest, const void *source, size_t count);
 void				*ft_memchr(const void *arr, int c, size_t n);
 int					ft_memcmp(const void *arr1, const void *arr2, size_t n);
-int ft_strlen(const char *str);
+int					ft_strlen(const char *str);
 char				*ft_strdup(const char *str);
 char				*ft_strcpy(char *dest, const char *source);
 char				*ft_strncpy(char *dest, const char *source, size_t n);
@@ -117,6 +117,7 @@ int					ft_min(int a, int b);
 void				ft_replace_repetition(char **str, char ch);
 char				*ft_strplussymb(char *str, char ch);
 char				**ft_twarrcpy(const char **arr, size_t size);
-char				**ft_addlinetwarr(const char **arr, const char *str, size_t size);
+char				**ft_addlinetwarr(const char **arr, const char *str,
+		size_t size);
 
 #endif

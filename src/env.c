@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ojessi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/29 16:16:41 by ojessi            #+#    #+#             */
+/*   Updated: 2019/12/29 16:16:42 by ojessi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void	env_print_error(char *name)
 {
-	struct stat 	buf;
+	struct stat	buf;
 
 	lstat(name, &buf);
 	if (!S_ISDIR(buf.st_mode))
@@ -47,14 +59,14 @@ void	ft_unsetenv_new_env(const char *name, t_min *sh, int size)
 	j = -1;
 	while (sh->env[++i])
 	{
-		if (!ft_strncmp(name, sh->env[i], ft_strlen(name)) && sh->env[i][ft_strlen(name)] == '=')
+		if (!ft_strncmp(name, sh->env[i], ft_strlen(name)) &&
+				sh->env[i][ft_strlen(name)] == '=')
 			continue ;
-		else
-			if (!(env[++j] = ft_strdup(sh->env[i])))
-			{
-				ft_frtwarr((void **)env, j);
-				return ;
-			}
+		else if (!(env[++j] = ft_strdup(sh->env[i])))
+		{
+			ft_frtwarr((void **)env, j);
+			return ;
+		}
 	}
 	env[++j] = NULL;
 	ft_frtwarr((void **)sh->env, INT_MAX);
@@ -79,7 +91,8 @@ void	ft_unsetenv(const char *name, t_min *sh)
 		return ;
 	}
 	while (sh->env[++i])
-		if (!ft_strncmp(name, sh->env[i], ft_strlen(name)) && sh->env[i][ft_strlen(name)] == '=')
+		if (!ft_strncmp(name, sh->env[i], ft_strlen(name)) &&
+				sh->env[i][ft_strlen(name)] == '=')
 			f = 1;
 	if (f)
 		ft_unsetenv_new_env(name, sh, i);

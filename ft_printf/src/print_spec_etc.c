@@ -6,7 +6,7 @@
 /*   By: ojessi <ojessi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 15:24:15 by ojessi            #+#    #+#             */
-/*   Updated: 2019/06/02 15:26:52 by ojessi           ###   ########.fr       */
+/*   Updated: 2019/12/29 15:55:53 by ojessi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void			print_unsint(t_ob *ob, char c)
 static	void	base_next(t_ob *ob, unsigned long tmp)
 {
 	ob->i++;
-    OUT = ft_ultoa_base(tmp, 2);
+	OUT = ft_ultoa_base(tmp, 2);
 	ob->ret += write(ob->fd, OUT, ft_strlen(OUT));
 	free(OUT);
 }

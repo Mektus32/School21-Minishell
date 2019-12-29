@@ -1,21 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   setenv.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ojessi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/29 16:17:12 by ojessi            #+#    #+#             */
+/*   Updated: 2019/12/29 16:18:30 by ojessi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-void	ft_setenv_origin(const char **name, const char **value, int overwrite, t_min *sh)
+void	ft_setenv_origin(const char **name, const char **value,
+		int overwrite, t_min *sh)
 {
 	int		i;
 	int		f;
-	char *tmp;
-	char **env;
+	char	*tmp;
+	char	**env;
 
 	i = -1;
 	f = 0;
 	while (sh->env[++i])
-		if (!ft_strncmp((char*)name, sh->env[i], ft_strlen((char*)name)) && sh->env[i][ft_strlen((char*)name)] == '=')
+		if (!ft_strncmp((char*)name, sh->env[i],
+		ft_strlen((char*)name)) && sh->env[i][ft_strlen((char*)name)] == '=')
 		{
 			if (overwrite)
 			{
 				free(sh->env[i]);
-				sh->env[i] = ft_free_strjoin_rev((char*)name, ft_strjoin("=", (char*)value));
+				sh->env[i] = ft_free_strjoin_rev((char*)name,
+						ft_strjoin("=", (char*)value));
 			}
 			f = 1;
 		}
@@ -41,21 +56,24 @@ void	ft_setenv(t_min *sh)
 		++i;
 	if (i != 4)
 	{
-		i < 4 ? ft_printf("setenv: too less arguments\n") : ft_printf("setenv: too many arguments\n");
+		i < 4 ? ft_printf("setenv: too less arguments\n") :
+			ft_printf("setenv: too many arguments\n");
 		return ;
 	}
 	if (!ft_isdigit(sh->line[3][0]))
 	{
-		if ((sh->line[3][0] == '-' || sh->line[3][0] == '+') && ft_isdigit(sh->line[3][1]))
-				overwrite = ft_atoi(sh->line[3]);
+		if ((sh->line[3][0] == '-' || sh->line[3][0] == '+') &&
+				ft_isdigit(sh->line[3][1]))
+			overwrite = ft_atoi(sh->line[3]);
 		else
 		{
 			ft_printf("setenv: expected number in 3 arg, but get: %s\n",
-					  sh->line[3]);
-			return;
+			sh->line[3]);
+			return ;
 		}
 	}
 	else
 		overwrite = ft_atoi(sh->line[3]);
-	ft_setenv_origin((const char **)sh->line[1], (const char **)sh->line[2], overwrite, sh);
+	ft_setenv_origin((const char **)sh->line[1], (const char **)sh->line[2],
+			overwrite, sh);
 }
