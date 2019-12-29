@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ojessi <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/29 16:10:56 by ojessi            #+#    #+#             */
-/*   Updated: 2019/12/29 16:10:57 by ojessi           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
 void	sh_init(t_min *sh, const char **av, const char **env)
@@ -45,17 +33,17 @@ int		main(int ac, const char **av, const char **env)
 	{
 		input_prompt(sh);
 		get_next_line(0, &line);
-		sh.line = ft_strsplit(line, ' ');
-		if (sh.line[0])
+		if (ft_strlen(line))
 		{
+			sh.line = ft_strsplit(line, ' ');
 			if (!check_command(&sh))
 			{
 				sh_free(&sh);
 				free(line);
 				return (0);
 			}
-			ft_frtwarr((void **)sh.line, INT_MAX);
-			free(line);
+			ft_frtwarr((void **) sh.line, INT_MAX);
 		}
+		line ? free(line) : 0;
 	}
 }
