@@ -41,6 +41,14 @@ void	cd_second_param(t_min *sh)
 		if (!chdir((home = ft_getenv("HOME", *sh))))
 			change_paths(sh, ft_strdup(home), ft_strdup(sh->cur_path));
 	}
+	else if (str[0] == '~')
+	{
+		home = ft_getenv("HOME", *sh);
+		home = ft_strjoin(home, str + 1);
+		if (!chdir(home))
+			change_paths(sh, ft_strdup(home), ft_strdup(sh->cur_path));
+		free(home);
+	}
 	else
 		ft_printf("~bash: cd: %s:No such file or directory\n", sh->line[1]);
 	free(str);

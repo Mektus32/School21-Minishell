@@ -103,6 +103,7 @@ SRC	=	ft_atoi.c \
 		ft_strplussymb.c \
 		ft_twarrcpy.c \
 		ft_addlinetwarr.c \
+		ft_replaceonspaces.c \
 
 OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
