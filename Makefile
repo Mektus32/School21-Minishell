@@ -9,6 +9,7 @@ SRC =   cd.c \
 		echo.c \
 		useful.c \
 		setenv.c \
+		global.c \
 		input_prompt.c \
 		check_commands.c \
 

@@ -24,6 +24,11 @@ char	*ft_getenv(const char *name, t_min sh)
 	return (NULL);
 }
 
+void	sign(int param)
+{
+	ft_putchar('\n');
+}
+
 void	start_program(const char *name, t_min sh)
 {
 	pid_t	pid;
@@ -31,6 +36,7 @@ void	start_program(const char *name, t_min sh)
 	if (!access(name, 1))
 	{
 		pid = fork();
+		signal(SIGINT, sign);
 		if (pid == 0)
 			execve(name, sh.line, sh.env);
 		wait(NULL);

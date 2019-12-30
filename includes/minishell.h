@@ -21,6 +21,9 @@
 # include <sys/wait.h>
 # include <sys/stat.h>
 # include <dirent.h>
+# include <signal.h>
+
+extern char *g_path;
 
 typedef struct	s_min
 {

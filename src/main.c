@@ -30,16 +30,18 @@ void	sh_free(t_min *sh, char **line)
 	free(sh->prev_path);
 }
 
-//void	fun(int param)
-//{
-//	ft_putchar('\n');
-//}
+void	fun(int param)
+{
+	ft_printf("\n%s", g_path);
+}
 
 int		main(int ac, const char **av, const char **env)
 {
 	t_min	sh;
 	char	*line;
 	char	*tmp;
+	char	**twtmp;
+	size_t	i;
 
 	if (ac > 1)
 	{
@@ -49,22 +51,26 @@ int		main(int ac, const char **av, const char **env)
 	sh_init(&sh, av, env);
 	while (1)
 	{
-//		signal(SIGINT, fun);
+		signal(SIGINT, fun);
 		input_prompt(sh);
 		get_next_line(0, &line);
-		if (ft_strlen(line))
+		tmp = ft_replaceonspaces(line);
+		free(line);
+		line = tmp;
+		twtmp = ft_strsplit(line, ';');
+		i = 0;
+		while (twtmp[i])
 		{
-			tmp = ft_replaceonspaces(line);
-			free(line);
-			line = tmp;
-			sh.line = ft_strsplit(line, ' ');
+			sh.line = ft_strsplit(twtmp[i], ' ');
+			++i;
 			if (*sh.line && !check_command(&sh))
 			{
 				sh_free(&sh, &line);
 				return (0);
 			}
-			sh.line ? ft_frtwarr((void **)sh.line, INT_MAX) : 0;
+			sh.line ? ft_frtwarr((void **) sh.line, INT_MAX) : 0;
 		}
+		ft_frtwarr((void **) twtmp, INT_MAX);
 		line ? free(line) : 0;
 	}
 }
