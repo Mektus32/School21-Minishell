@@ -37,13 +37,15 @@ typedef struct	s_min
 /*
 ** main.c
 */
-void			sh_init(t_min *sh, const char **av, const char **env);
-void			sh_free(t_min *sh, char **line);
+void sh_init(t_min *sh, const char **av, const char **env, int ac);
+int sh_free(t_min *sh, char **line);
 
 /*
 ** input_prompt.c
 */
 void			input_prompt(t_min sh);
+void			input_prompt_user(t_min sh, char *user);
+void input_prompt_home(char *home);
 
 /*
 ** useful.c
@@ -65,6 +67,7 @@ void			check_command_etc(t_min *sh);
 void			cd(t_min *sh);
 void			change_paths(t_min *sh, char *new_cur, char *new_prev);
 void			cd_second_param(t_min *sh);
+void			cd_second_param_etc(t_min *sh, char *str, char **home);
 
 /*
 ** echo.c
@@ -90,5 +93,15 @@ void			ft_setenv(t_min *sh);
 void			ft_setenv_origin(char **name, char **value,
 							int overwrite, t_min *sh);
 void			ft_setenv_addline(char **line, t_min *sh);
+
+/*
+**global.c
+*/
+
+/*
+**signal.c
+*/
+void			fun(int param);
+void			sign(int param);
 
 #endif

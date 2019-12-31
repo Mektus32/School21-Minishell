@@ -24,11 +24,6 @@ char	*ft_getenv(const char *name, t_min sh)
 	return (NULL);
 }
 
-void	sign(int param)
-{
-	ft_putchar('\n');
-}
-
 void	start_program(const char *name, t_min sh)
 {
 	pid_t	pid;

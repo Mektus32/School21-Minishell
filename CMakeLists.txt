@@ -111,4 +111,4 @@ add_executable(min
         libft/ft_ultoa.c
         libft/ft_ultoa_base.c
         libft/get_next_line.c
-        src/main.c src/input_prompt.c src/useful.c src/check_commands.c src/cd.c libft/ft_replace_repetition.c src/echo.c libft/ft_strplussymb.c src/env.c libft/ft_twarrcpy.c src/setenv.c libft/ft_addlinetwarr.c libft/ft_replaceonspaces.c src/global.c)
+        src/main.c src/input_prompt.c src/useful.c src/check_commands.c src/cd.c libft/ft_replace_repetition.c src/echo.c libft/ft_strplussymb.c src/env.c libft/ft_twarrcpy.c src/setenv.c libft/ft_addlinetwarr.c libft/ft_replaceonspaces.c src/global.c src/signal.c)

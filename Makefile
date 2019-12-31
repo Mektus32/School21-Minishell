@@ -10,6 +10,7 @@ SRC =   cd.c \
 		useful.c \
 		setenv.c \
 		global.c \
+		signal.c \
 		input_prompt.c \
 		check_commands.c \
 
@@ -18,7 +19,7 @@ OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
 # compiler
 CC = gcc
-#CFLAGS = -Wextra -Wall -Werror -g
+CFLAGS = -Wextra -Wall -Werror -g
 # -fsanitize=address
 
 # ft library

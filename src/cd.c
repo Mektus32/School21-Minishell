@@ -20,6 +20,25 @@ void	change_paths(t_min *sh, char *new_cur, char *new_prev)
 	sh->prev_path = new_prev;
 }
 
+void	cd_second_param_etc(t_min *sh, char *str, char **home)
+{
+	if (!ft_strcmp(str, "~"))
+	{
+		if (!chdir((*home = ft_getenv("HOME", *sh))))
+			change_paths(sh, ft_strdup(*home), ft_strdup(sh->cur_path));
+	}
+	else if (str[0] == '~')
+	{
+		*home = ft_getenv("HOME", *sh);
+		*home = ft_strjoin(*home, str + 1);
+		if (!chdir(*home))
+			change_paths(sh, ft_strdup(*home), ft_strdup(sh->cur_path));
+		free(*home);
+	}
+	else
+		ft_printf("~bash: cd: %s:No such file or directory\n", sh->line[1]);
+}
+
 void	cd_second_param(t_min *sh)
 {
 	char	*home;
@@ -36,21 +55,8 @@ void	cd_second_param(t_min *sh)
 		else if (!chdir(sh->prev_path))
 			change_paths(sh, ft_strdup(sh->prev_path), ft_strdup(sh->cur_path));
 	}
-	else if (!ft_strcmp(str, "~"))
-	{
-		if (!chdir((home = ft_getenv("HOME", *sh))))
-			change_paths(sh, ft_strdup(home), ft_strdup(sh->cur_path));
-	}
-	else if (str[0] == '~')
-	{
-		home = ft_getenv("HOME", *sh);
-		home = ft_strjoin(home, str + 1);
-		if (!chdir(home))
-			change_paths(sh, ft_strdup(home), ft_strdup(sh->cur_path));
-		free(home);
-	}
 	else
-		ft_printf("~bash: cd: %s:No such file or directory\n", sh->line[1]);
+		cd_second_param_etc(sh, str, &home);
 	free(str);
 }
 
