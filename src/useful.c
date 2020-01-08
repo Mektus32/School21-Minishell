@@ -6,7 +6,7 @@
 /*   By: ojessi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 16:14:23 by ojessi            #+#    #+#             */
-/*   Updated: 2019/12/29 16:15:01 by ojessi           ###   ########.fr       */
+/*   Updated: 2020/01/08 19:08:16 by ojessi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,8 @@ char	*get_program(const char **dirs, const char *name)
 					if (!ft_strcmp(name, file->d_name))
 					{
 						closedir(fd_dir);
-						return (ft_free_strjoin_rev((char *) dirs[i],
-													ft_strjoin("/",
-															   file->d_name)));
+						return (ft_free_strjoin_rev((char *)dirs[i],
+											ft_strjoin("/", file->d_name)));
 					}
 				closedir(fd_dir);
 			}

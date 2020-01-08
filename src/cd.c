@@ -6,7 +6,7 @@
 /*   By: ojessi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 16:06:30 by ojessi            #+#    #+#             */
-/*   Updated: 2019/12/29 16:07:01 by ojessi           ###   ########.fr       */
+/*   Updated: 2020/01/08 19:06:54 by ojessi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	cd(t_min *sh)
 		}
 	if (i == 2)
 		cd_second_param(sh);
-	else if (!chdir((home = ft_getenv("HOME", *sh))))
+	else if (!chdir((home = ft_getenv("HOME", *sh))) && ft_strcmp(home,
+	sh->cur_path))
 		change_paths(sh, ft_strdup(home), ft_strdup(sh->cur_path));
 }

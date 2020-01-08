@@ -6,7 +6,7 @@
 /*   By: ojessi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 15:57:36 by ojessi            #+#    #+#             */
-/*   Updated: 2019/12/29 16:54:25 by ojessi           ###   ########.fr       */
+/*   Updated: 2020/01/08 19:14:52 by ojessi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,17 @@ typedef struct	s_min
 /*
 ** main.c
 */
-void sh_init(t_min *sh, const char **av, const char **env, int ac);
-int sh_free(t_min *sh, char **line);
+void			sh_init(t_min *sh, const char **av, const char **env, int ac);
+int				sh_free(t_min *sh, char **line, char **new_line,
+		char **split_line);
+char			*get_line(t_min sh);
 
 /*
 ** input_prompt.c
 */
 void			input_prompt(t_min sh);
 void			input_prompt_user(t_min sh, char *user);
-void input_prompt_home(char *home);
+void			input_prompt_home(char *home);
 
 /*
 ** useful.c
@@ -53,7 +55,7 @@ void input_prompt_home(char *home);
 char			*ft_getenv(const char *name, t_min sh);
 void			start_program(const char *name, t_min sh);
 char			*get_program(const char **dirs, const char *name);
-char *get_program_full_dir(const char *name);
+char			*get_program_full_dir(const char *name);
 
 /*
 ** check_commands.c
